@@ -51,7 +51,6 @@ app.post('/login', async (req, res, next) => {
         title: 'Home',
         bienvenida: 'data esta definidom, paso user y pw',
         nombre: req.session.nombre,
-        rol: req.session.rol
       });
     } else {
       res.render('index', { 
