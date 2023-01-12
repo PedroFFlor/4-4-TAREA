@@ -1,5 +1,68 @@
- 
-    <p>{{tittle}}</p>
-    
-    
-
+<main className="container-sm text-center d-flex flex-column">
+    <div className="d-flex flex-column align-items-center my-2">
+        <button type="button" className="btn btn-danger my-2 col-sm-6 ">Autorizar ofertas y/o representaciones</button>
+        <hr></hr>
+        <button type="button" className="btn btn-primary btn-lg my-2">OFERTAS</button>
+        <div className="col-sm-6 ">
+            <form className="my-3">
+                <h4>Cambiar descuentos por cantidad</h4>
+                <div className="input-group">
+                    <input type="file" className="form-control" id="inputGroupFile04"
+                        aria-describedby="inputGroupFileAddon04" aria-label="Upload"></input>
+                    <button className="btn btn-primary" type="button" id="inputGroupFileAddon04">Enviar</button>
+                </div>
+            </form>
+            <h6>Recuerde que la imagen debe tener 400*300px</h6>
+        </div>
+        <div className="d-flex flex-column align-items-center my-2">
+            <button type="button" className="btn btn-primary btn-lg my-2">CONDICIONES</button>
+            <form>
+                <div className="row">
+                    <div className="col-sm-12">
+                        <input type="file" /></input>
+                        <h6>Recuerde que la imagen debe de ser de 300*200px</h6>
+                        <input type="text" placeholder="Titulo" /></input>
+                        <textarea defaultValue="Aca iria el texto que queremos mostrar en condiciones"></textarea>
+                    </div>
+                </div>
+                <button>Eliminar</button>
+                <button>Agregar</button>
+                <button>Guardar Cambios</button>
+            </form>
+        </div>
+        <div className="d-flex flex-column align-items-center my-2">
+            <button type="button" className="btn btn-primary btn-lg my-2">HOME</button>
+            <form>
+                <div className="row">
+                    <div className="col-sm-12">
+                        <input type="text" placeholder="Titulo bienvenida"></input>
+                        <input type="file"></input>
+                        <textarea defaultValue="Aca iria el texto que queremos mostrar en la bienvenida"></textarea>
+                    </div>
+                </div>
+                <button>Eliminar</button>
+                <button>Guardar Cambios</button>
+            </form>
+            <form>
+                <div className="row">
+                    <div className="col-sm-12 d-flex">
+                        <input type="file"></input>
+                        <textarea defaultValue="Aca iria el texto que queremos mostrar en la bienvenida"></textarea>
+                    </div>
+                    <button>Eliminar</button>
+                    <div className="col-sm-12 d-flex">
+                        <input type="file"></input>
+                        <textarea defaultValue="Aca iria el texto que queremos mostrar en la bienvenida"></textarea>
+                    </div>
+                    <button>Eliminar</button>
+                    <div className="col-sm-12 d-flex">
+                        <input type="file"></input>
+                        <textarea defaultValue="Aca iria el texto que queremos mostrar en la bienvenida"></textarea>
+                    </div>
+                    <button>Eliminar</button>
+                    <button>Agregar</button>
+                    <button>Guardar Cambios</button>
+                </div>
+            </form>
+        </div>
+</main>

@@ -46,11 +46,14 @@ app.post('/login', async (req, res, next) => {
       req.session.nombre = data.nombre
       if (data.rol == 'Administrador') {
         req.session.admin = true
-      } else req.session.admin = false
+      } else {
+        req.session.admin = false
+      }
       res.render('index', { 
         title: 'Home',
         bienvenida: 'data esta definidom, paso user y pw',
         nombre: req.session.nombre,
+        admin: req.session.admin,
       });
     } else {
       res.render('index', { 
@@ -68,7 +71,7 @@ app.get('/admin/logout', (req, res, next) => {
   req.session.destroy();
   res.render('index', { 
     title: 'Home',
-    bienvenida: 'Este es el home de la tarea del modulo 4 unidad 3!!!',
+    bienvenida: 'Sesion cerrada correctamente',
   }); 
 });
 
