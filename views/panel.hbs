@@ -1,24 +1,25 @@
-<main className="container-sm text-center d-flex flex-column">
-    <div className="d-flex flex-column align-items-center my-2">
-        <button type="button" className="btn btn-danger my-2 col-sm-6 ">Autorizar ofertas y/o representaciones</button>
-        <hr></hr>
-        <button type="button" className="btn btn-primary btn-lg my-2">OFERTAS</button>
-        <div className="col-sm-6 ">
-            <form className="my-3">
+<main class="container-sm text-center d-flex flex-column">
+    <div class="d-flex flex-column align-items-center my-2">
+        <button type="button" class="btn btn-danger my-2 col-sm-6 ">Autorizar ofertas y/o representaciones</button>
+        <hr>
+        </hr>
+        <button type="button" class="btn btn-primary btn-lg my-2">OFERTAS</button>
+        <div class="col-sm-6 ">
+            <form class="my-3" enctype="multipart/form-data">
                 <h4>Cambiar descuentos por cantidad</h4>
-                <div className="input-group">
-                    <input type="file" className="form-control" id="inputGroupFile04"
+                <div class="input-group">
+                    <input type="file" class="form-control" id="inputGroupFile04"
                         aria-describedby="inputGroupFileAddon04" aria-label="Upload"></input>
-                    <button className="btn btn-primary" type="button" id="inputGroupFileAddon04">Enviar</button>
+                    <button class="btn btn-primary" type="button" id="inputGroupFileAddon04">Enviar</button>
                 </div>
             </form>
             <h6>Recuerde que la imagen debe tener 400*300px</h6>
         </div>
-        <div className="d-flex flex-column align-items-center my-2">
-            <button type="button" className="btn btn-primary btn-lg my-2">CONDICIONES</button>
-            <form>
-                <div className="row">
-                    <div className="col-sm-12">
+        <div class="d-flex flex-column align-items-center my-2">
+            <button type="button" class="btn btn-primary btn-lg my-2">CONDICIONES</button>
+            <form enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-sm-12">
                         <input type="file" /></input>
                         <h6>Recuerde que la imagen debe de ser de 300*200px</h6>
                         <input type="text" placeholder="Titulo" /></input>
@@ -30,39 +31,91 @@
                 <button>Guardar Cambios</button>
             </form>
         </div>
-        <div className="d-flex flex-column align-items-center my-2">
-            <button type="button" className="btn btn-primary btn-lg my-2">HOME</button>
-            <form>
-                <div className="row">
-                    <div className="col-sm-12">
-                        <input type="text" placeholder="Titulo bienvenida"></input>
-                        <input type="file"></input>
-                        <textarea defaultValue="Aca iria el texto que queremos mostrar en la bienvenida"></textarea>
+        <hr>
+        </hr>
+        <div class="d-flex flex-column align-items-center my-2">
+            <button type="button" class="btn btn-primary btn-lg my-2">HOME</button> 
+            <form enctype="multipart/form-data">
+                <div class="row border border-primary rounded p-2">
+                    <div class="col-3 text-start">
+                        <label class="d-inline">Titulo Bienvenida:</label>
+                        <input class="form-control d-inline" type="text" placeholder="Titulo bienvenida"></input>
+                        <label class="d-inline">Imagen:</label>
+                        <input class="form-control d-inline" type="file"></input>
+                    </div>
+                    <div class="col-6">
+                         <label class="d-block">Descripcion:</label>
+                        <textarea class="form-control" defaultValue="Aca iria el texto que queremos mostrar en la bienvenida" style="height: 90px"></textarea>
+                    </div>
+                    <div class="col-3 d-flex flex-column justify-content-evenly" >
+                        <button class="form-control d-block">Eliminar</button>
+                        <button class="form-control d-block">Guardar Cambios</button>
                     </div>
                 </div>
-                <button>Eliminar</button>
-                <button>Guardar Cambios</button>
             </form>
-            <form>
-                <div className="row">
-                    <div className="col-sm-12 d-flex">
-                        <input type="file"></input>
-                        <textarea defaultValue="Aca iria el texto que queremos mostrar en la bienvenida"></textarea>
+            <hr></hr>
+            {{#if agregar}}
+                <form action="/panel/agregar" method="post" enctype="multipart/form-data">
+                    <div class="row border border-primary rounded p-2 m-1">
+                        <div class="col-3 text-start">
+                            <label class="d-inline">Titulo Noticia:</label>
+                            <input class="form-control d-inline" type="text" name="titulo" value="Ingrese titulo"></input>
+                            <label class="d-inline">Imagen:</label>
+                            <input class="form-control d-inline" type="file" name="imagen"></input>
+                        </div>
+                        <div class="col-6">
+                            <label class="d-block">Descripcion:</label>
+                            <textarea class="form-control" name="cuerpo" style="height: 90px">Ingrese deascripcion de la noticia.</textarea>
+                        </div>
+                        <div class="col-3 d-flex flex-column justify-content-evenly" >
+                            <button class="form-control d-block" type="submit" >Agregar Noticia</button>
+                        </div>
                     </div>
-                    <button>Eliminar</button>
-                    <div className="col-sm-12 d-flex">
-                        <input type="file"></input>
-                        <textarea defaultValue="Aca iria el texto que queremos mostrar en la bienvenida"></textarea>
+                </form>
+            {{/if}}
+            {{#if modificar}}
+                <form action="/panel/modificar" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="id" value="{{modifyNews.id}}">
+                    <div class="row border border-primary rounded p-2 m-1">
+                        <div class="col-3 text-start">
+                            <label class="d-inline">Titulo Noticia:</label>
+                            <input class="form-control d-inline" type="text" name="titulo" value="{{modifyNews.titulo}}" />
+                            <label class="d-inline">Imagen:</label>
+                            <input class="form-control d-inline" type="file" name="imagen"></input>
+                            <label>Eliminar imagen<input type="checkbox" name="img_delete" value="1"></input></label>
+                            <input type="hidden" name="img_original" value="{{modifyNews.img_id}}"></input>
+                        </div>
+                        <div class="col-6">
+                            <label class="d-block">Descripcion:</label>
+                            <textarea class="form-control" name="cuerpo" style="height: 90px">{{modifyNews.cuerpo}}</textarea>
+                        </div>
+                        <div class="col-3 d-flex flex-column justify-content-evenly" >
+                            <button class="form-control d-block btn btn-primary" type="submit" >Modificar Noticia</button>
+                        </div> 
                     </div>
-                    <button>Eliminar</button>
-                    <div className="col-sm-12 d-flex">
-                        <input type="file"></input>
-                        <textarea defaultValue="Aca iria el texto que queremos mostrar en la bienvenida"></textarea>
+                </form>
+            {{/if}}
+            {{#if error}}
+                <p>{{mensaje}}</p>
+            {{/if}}
+            {{#each news}}
+                <div class="row border border-primary rounded p-2 m-1">
+                    <div class="col-10 d-flex">
+                        <div>
+                            <h3>{{titulo}}</h3>
+                            <p>{{cuerpo}}</p>
+                        </div>
+                        <div class="float-start m-2" >
+                            {{{imagen}}}
+                        </div>
                     </div>
-                    <button>Eliminar</button>
-                    <button>Agregar</button>
-                    <button>Guardar Cambios</button>
+                    <div class="col-2 d-flex flex-column justify-content-evenly" >
+                        <a href="/panel/eliminarNoticia/{{{id}}}" class="form-control d-block btn btn-primary">Eliminar</a>
+                        <a href="/panel/modificarNoticia/{{{id}}}" class="form-control d-block btn btn-primary">Modificar</a>
+                    </div>
                 </div>
-            </form>
+            {{/each}}
+            <a class="btn  btn-primary" href="/panel/agregarNoticia" >Agregar Noticia</a>
         </div>
+    </div>
 </main>

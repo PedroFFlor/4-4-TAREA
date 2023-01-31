@@ -5,11 +5,14 @@ const session = require('express-session')
 require('dotenv').config()
 var pool = require('./models/db')
 var usersModel = require('./models/usersModels')
+var fileUpload = require('express-fileupload')
+var cors = require('cors')
 
 var indexRouter = require('./routes/index');
 var contactoRouter = require('./routes/contacto');
 var galeriaRouter = require('./routes/galeria');
 var panelRouter = require('./routes/panel');
+var apiRouter = require('./routes/api');
 
 var app = express();
 
@@ -28,11 +31,17 @@ app.use(session({
   saveUninitialized: true
 }));
 
+app.use(fileUpload({
+  useTempFiles: true,
+  tempFileDir: '/tmp'
+}));
+
 
 app.use('/', indexRouter);
 app.use('/contacto', contactoRouter );
 app.use('/galeria', galeriaRouter);
 app.use('/panel', panelRouter);
+app.use('/api', cors(), apiRouter);
 
 app.post('/login', async (req, res, next) => { 
 
