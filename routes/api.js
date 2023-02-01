@@ -8,7 +8,7 @@ var usersModel = require('../models/usersModels')
 const uploader = util.promisify(cloudinary.uploader.upload)
 const destroy = util.promisify(cloudinary.uploader.destroy)
 
-const productos = [
+let productos = [
   {
     codigo: 310101,
     desc : '9 de oro clasica x 200grs',
@@ -18,7 +18,7 @@ const productos = [
     embalaje : 20,
     esOferta : false,
     esRepresentacion : false,
-    rutaImg :''
+    rutaImg :'310101.jpg'
   },
   {
     codigo: 310102,
@@ -29,7 +29,7 @@ const productos = [
     embalaje : 20,
     esOferta : false,
     esRepresentacion : false,
-    rutaImg :''
+    rutaImg :'310102.jpg'
   },
   {
     codigo: 310103,
@@ -40,7 +40,7 @@ const productos = [
     embalaje : 20,
     esOferta : false,
     esRepresentacion : false,
-    rutaImg :''
+    rutaImg :'310103.jpg'
   },
   {
     codigo: 311101,
@@ -51,10 +51,10 @@ const productos = [
     embalaje : 12,
     esOferta : false,
     esRepresentacion : false,
-    rutaImg :''
+    rutaImg :'311101.jpg'
   },
   {
-    codigo: 311101,
+    codigo: 311102,
     desc : 'Natura salsa golf x 250grs',
     marca : 'Natura',
     rubro : 'Aderezos',
@@ -62,10 +62,10 @@ const productos = [
     embalaje : 12,
     esOferta : false,
     esRepresentacion : false,
-    rutaImg :''
+    rutaImg :'311102.jpg'
   },
   {
-    codigo: 311101,
+    codigo: 311103,
     desc : 'Natura mostaza x 250grs',
     marca : 'Natura',
     rubro : 'Aderezos',
@@ -73,7 +73,7 @@ const productos = [
     embalaje : 12,
     esOferta : false,
     esRepresentacion : false,
-    rutaImg :''
+    rutaImg :'311103.jpg'
   },
   {
     codigo : 530101,
@@ -84,7 +84,7 @@ const productos = [
     embalaje : 10,
     esOferta : true,
     esRepresentacion : true,
-    rutaImg :''
+    rutaImg :'530101.jpg'
   },
   {
     codigo : 530301,
@@ -95,7 +95,7 @@ const productos = [
     embalaje : 10,
     esOferta : true,
     esRepresentacion : true,
-    rutaImg :''
+    rutaImg :'530302.jpg'
   },
   {
     codigo : 530201,
@@ -106,7 +106,7 @@ const productos = [
     embalaje : 10,
     esOferta : true,
     esRepresentacion : true,
-    rutaImg :''
+    rutaImg :'530201.jpg'
   },
   {
     codigo : 30101,
@@ -117,7 +117,7 @@ const productos = [
     embalaje : 10,
     esOferta : true,
     esRepresentacion : true,
-    rutaImg :''
+    rutaImg :'30101.jpg'
   },
   {
     codigo : 30301,
@@ -128,7 +128,7 @@ const productos = [
     embalaje : 10,
     esOferta : true,
     esRepresentacion : true,
-    rutaImg :''
+    rutaImg :'30301.jpg'
   },
   {
     codigo : 30201,
@@ -139,29 +139,29 @@ const productos = [
     embalaje : 10,
     esOferta : true,
     esRepresentacion : true,
-    rutaImg :''
+    rutaImg :'30201.jpg'
   },
   {
     codigo : 220101,
-    desc : 'Crieky palitos salados x 1kg',
+    desc : 'Crieky mani salado x 1kg',
     marca : 'Criskey',
     rubro : 'Copetin',
     precio : 340,
     embalaje : 10,
     esOferta : false,
     esRepresentacion : true,
-    rutaImg :''
+    rutaImg :'220101.jpg'
   },
   {
     codigo : 220102,
-    desc : 'Crieky papas fritas x 1kg',
+    desc : 'Crieky puflitos x 1kg',
     marca : 'Criskey',
     rubro : 'Copetin',
     precio : 750,
     embalaje : 6,
     esOferta : false,
     esRepresentacion : true,
-    rutaImg :''
+    rutaImg :'220102.jpg'
   },
   {
     codigo : 220103,
@@ -172,7 +172,7 @@ const productos = [
     embalaje : 12,
     esOferta : false,
     esRepresentacion : true,
-    rutaImg :''
+    rutaImg :'220103.jpg'
   },
   {
     codigo : 220104,
@@ -183,7 +183,7 @@ const productos = [
     embalaje : 18,
     esOferta : false,
     esRepresentacion : true,
-    rutaImg :''
+    rutaImg :'220104.jpg'
   },
   {
     codigo : 410101,
@@ -194,7 +194,7 @@ const productos = [
     embalaje : 15,
     esOferta : true,
     esRepresentacion : false,
-    rutaImg :''
+    rutaImg :'410101.jpg'
   },
   {
     codigo : 410102,
@@ -205,7 +205,7 @@ const productos = [
     embalaje : 8,
     esOferta : true,
     esRepresentacion : false,
-    rutaImg :''
+    rutaImg :'410102.jpg'
   },
   {
     codigo : 410103,
@@ -216,7 +216,7 @@ const productos = [
     embalaje : 12,
     esOferta : true,
     esRepresentacion : false,
-    rutaImg :''
+    rutaImg :'410103.jpg'
   },
   {
     codigo : 410104,
@@ -227,7 +227,7 @@ const productos = [
     embalaje : 12,
     esOferta : true,
     esRepresentacion : false,
-    rutaImg :''
+    rutaImg :'410104.jpg'
   },
   
   
@@ -366,30 +366,25 @@ router.get('/panel/modificarNoticia/:id', async function (req, res, next) {
 });
 
 router.post('/panel/modificarNoticia', async function (req, res, next) { 
-  console.log('modificar'); 
 
   try {
 
-    let img_id = req.body.img_original //no llega
+    let img_id_viejo = req.body.img_id
     let borrar_img_vieja = false
 
-    console.log(req.body); 
-
     if (req.body.img_delete === "true") {
-      img_id = null
       borrar_img_vieja = true
-      console.log('queremos borrar la img');
-    } else {
-      if (req.files && Object.keys(req.files).length > 0){
-        imagen = req.files.imagen
-        img_id = (await uploader(imagen.tempFilePath)).public_id
-        borrar_img_vieja = true
-        console.log('no queremos borrar pero entro una nueva');
-      }
+      img_id = null
+
     }
-    if ( borrar_img_vieja && req.body.img_original){
-      console.log('quiero borrar img y le pase el id en cloud');
-      await(destroy(req.body.img_original))
+    if (req.files && Object.keys(req.files).length > 0){
+      imagen = req.files.imagen
+      img_id = (await uploader(imagen.tempFilePath)).public_id //
+      borrar_img_vieja = true
+      
+    }
+    if ( borrar_img_vieja && img_id_viejo != null){
+      await(destroy(img_id_viejo))
     }
 
     var newNew = {
@@ -399,13 +394,19 @@ router.post('/panel/modificarNoticia', async function (req, res, next) {
     }
     
     await noticiasModels.modifyNewsById(newNew, req.body.id)
+
     
   }catch (error) {
     console.log(error);
   }
   
-
   res.json()
+  
+});
+
+router.get('/carpeta/productos', async function (req, res, next) {
+
+  res.json(productos)
   
 });
 
