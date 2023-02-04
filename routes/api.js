@@ -1,4 +1,3 @@
-const { log } = require('console');
 var express = require('express');
 var cloudinary = require('cloudinary').v2
 var util = require('util')
@@ -7,6 +6,7 @@ var noticiasModels = require('../models/noticiasModels')
 var usersModel = require('../models/usersModels')
 const uploader = util.promisify(cloudinary.uploader.upload)
 const destroy = util.promisify(cloudinary.uploader.destroy)
+var nodemailer = require('nodemailer')
 
 let productos = [
   {
@@ -408,6 +408,36 @@ router.get('/carpeta/productos', async function (req, res, next) {
 
   res.json(productos)
   
+});
+
+router.post('/contacto', async function (req, res, next) {
+
+  const mail = {
+    to: 'react_node_utn@hotmail.com',
+    subject: `WEB :${req.body.asunto}`,
+    html: `<p>${req.body.nombre} se contacto por la web.</p>
+          <p>Mensaje: ${req.body.mensaje}</p>
+          <p>Datos:</p>
+          <p>Nombre: ${req.body.nombre}</p>
+          <p>Mail: ${req.body.mail}</p>
+          <p>Telefono: ${req.body.telefono}</p>`,
+  }
+
+  var distribuidorax = nodemailer.createTransport({ 
+    host: process.env.SMTP_HOST,
+    port: process.env.SMTP_PORT,
+    auth: {
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASS,
+    }
+  });
+
+  await distribuidorax.sendMail(mail)
+
+  res.status(201).json({
+    error:false,
+    mensaje: 'Mensaje Enviado!'
+  })
 });
 
 

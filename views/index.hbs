@@ -1,65 +1,42 @@
 
 <main class="container-sm text-center d-flex flex-column">
-    <h1>{{bienvenida}}</h1>
     <div class="row">
         <div class="col-sm-12">
-            <h2>Titulo bienvenida</h2>
-            <img src="https://via.placeholder.com/200x200" class="float-start m-3" alt="Distribuidora X"></img>
-            <div class="text-start">
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam quo laboriosam deleniti, mollitia
-                nesciunt
-                in, necessitatibus sequi rem unde ipsam dolore explicabo, consequuntur cum quos recusandae nemo
-                harum.
-                Optio, quisquam?</p>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam quo laboriosam deleniti, mollitia
-                nesciunt
-                in, necessitatibus sequi rem unde ipsam dolore explicabo, consequuntur cum quos recusandae nemo
-                harum.
-                Optio, quisquam?</p>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam quo laboriosam deleniti, mollitia
-                nesciunt
-                in, necessitatibus sequi rem unde ipsam dolore explicabo, consequuntur cum quos recusandae nemo
-                harum.
-                Optio, quisquam?</p>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam quo laboriosam deleniti, mollitia
-                nesciunt
-                in, necessitatibus sequi rem unde ipsam dolore explicabo, consequuntur cum quos recusandae nemo
-                harum.
-                Optio, quisquam?</p>
+            <h2>Distribuidora X</h2>
+            <div class="col-sm-4 my-2 float-start">
+                <img src="/img/home/home.jpg" class="float-start welcome_home" alt="Distribuidora X" />
+            </div>
+            <div>
+                <p>Somos una empresa de tradición familiar dedicada a la elaboración y comercialización de productos
+                    alimenticios que creció en base a un ideal de dedicación y servicio.</p>
+                <p>Nos distinguimos por nuestros tradicionales sándwiches de miga, deliciosos postres y exquisitas
+                    variedades. Todos estos son preparados en el momento con dedicación artesanal y materias primas
+                    seleccionadas para garantizar siempre la misma calidad y sabor original.</p>
+                <p>Actualmente contamos con un servicios integral de lunch y catering para la organización de todo
+                    tipo de eventos sociales y/o empresariales. Estos versátiles servicios cuentan con diferentes
+                    opciones y adicionales programados en forma conjunta con el cliente acorde al tipo de evento
+                    para satisfacer las expectativas, confiabilidad y la calidad del servicio.</p>
+                <p>Disponemos de 12 sucursales que brindan un servicio abierto todos los días del año y de reparto
+                    completo en todas áreas de la ciudad de Rosario, Funes, Roldán, Villa G. Galvez y alrededores.
+                    Además, contamos con una planta de elaboración exclusiva para postres y variedades, como así una
+                    flota de vehículos acondicionados para satisfacer el traslado y demanda en servicios de lunch.
+                </p>
             </div>
         </div>
     </div>
-    <hr class="hr1"></hr>
-    <div class="row news">
-        <div class="col-sm-12 d-flex">
-            <div>
-                <h3>Titulo noticia</h3>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam quo laboriosam deleniti, mollitia
-                    nesciunt in, necessitatibus sequi rem unde ipsam dolore explicabo, consequuntur cum quos recusandae
-                    nemo harum. Optio, quisquamnesciunt in, necessitatibus sequi rem unde ipsam dolore explicabo, consequuntur cum quos recusandae
-                    nemo harum. Optio, quisquam?</p>
+    <hr class="hr1" />
+    <div class="row">
+        {{#each news}}
+            <div class="col-sm-12 d-flex flex-column mb-3 py-2">
+                <h3 class="mx-auto ">{{titulo}}</h3>
+                <div class="">
+                    <div class="float-end m-2 img300x200">
+                        {{{imagen}}}
+                    </div>
+                    {{cuerpo}}
+                </div>
             </div>
-            <img src="https://via.placeholder.com/150x100"  class="float-start m-2" alt="Distribuidora X"></img>
-        </div>
-        <div class="col-sm-12 d-flex">
-            <div>
-                <h3>Titulo noticia</h3>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam quo laboriosam deleniti, mollitia
-                    nesciunt in, necessitatibus sequi rem unde ipsam dolore explicabo, consequuntur cum quos recusandae
-                    nemo harum. Optio, quisquamnesciunt in, necessitatibus sequi rem unde ipsam dolore explicabo, consequuntur cum quos recusandae
-                    nemo harum. Optio, quisquam?</p>
-            </div>
-            <img src="https://via.placeholder.com/150x100"  class="float-start m-2" alt="Distribuidora X"></img>
-        </div>
-        <div class="col-sm-12 d-flex">
-            <div>
-                <h3>Titulo noticia</h3>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam quo laboriosam deleniti, mollitia
-                    nesciunt in, necessitatibus sequi rem unde ipsam dolore explicabo, consequuntur cum quos recusandae
-                    nemo harum. Optio, quisquamnesciunt in, necessitatibus sequi rem unde ipsam dolore explicabo, consequuntur cum quos recusandae
-                    nemo harum. Optio, quisquam?</p>
-            </div>
-            <img src="https://via.placeholder.com/150x100"  class="float-start m-2" alt="Distribuidora X"></img>
-        </div>
+        {{/each}}
     </div>
 </main>
+

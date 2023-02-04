@@ -22,12 +22,13 @@ router.get('/', async function (req, res, next) {
     }
   })
 
-  if (req.session.nombre) {
+  if (req.session.admin) {
 
     res.render('panel', {
       tittle: 'Panel',
       nombre: req.session.nombre || undefined,
       admin: req.session.admin,
+      vendedor: req.session.vendedor,
       news
     });
   } else {
@@ -36,6 +37,7 @@ router.get('/', async function (req, res, next) {
       bienvenida: 'Tiene que ser administrador para ir al panel',
       nombre: req.session.nombre || undefined,
       admin: req.session.admin,
+      vendedor: req.session.vendedor,
       news
     });
   }
@@ -68,8 +70,6 @@ router.get('/agregarNoticia', async function (req, res, next) {
 });
 
 router.post('/agregar', async function (req, res, next){
-
-  console.log(req);
 
   try {
     var img_id = ''

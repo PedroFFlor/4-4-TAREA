@@ -4,27 +4,51 @@
 
 footer {
     color: white;
-    box-shadow: 2px 0px 20px 0px rgba(223,71,89,0.5);
-    -webkit-box-shadow: 2px 0px 20px 0px rgba(223,71,89,0.5);
-    -moz-box-shadow: 2px 0px 20px 0px rgba(223,71,89,0.5);
-}
-header {
-    box-shadow: 2px 0px 20px 0px rgba(2,117,216,0.5);
-    -webkit-box-shadow: 2px 0px 20px 0px rgba(2,117,216,0.5);
-    -moz-box-shadow: 2px 0px 20px 0px rgba(2,117,216,0.5);
+    box-shadow: 2px 0px 20px 0px rgba(223, 71, 89, 0.5);
+    -webkit-box-shadow: 2px 0px 20px 0px rgba(223, 71, 89, 0.5);
+    -moz-box-shadow: 2px 0px 20px 0px rgba(223, 71, 89, 0.5);
 }
 
-.active2{
+header {
+    box-shadow: 2px 0px 20px 0px rgba(2, 117, 216, 0.5);
+    -webkit-box-shadow: 2px 0px 20px 0px rgba(2, 117, 216, 0.5);
+    -moz-box-shadow: 2px 0px 20px 0px rgba(2, 117, 216, 0.5);
+}
+
+.active2 {
     border-radius: 10%;
     background-color: #dc3545;
     color: rgb(255, 255, 255, 1)
 }
 
-.hr1{
-    background-color: #dc3545 ;
+.color_blanco {
+    color: white;
+}
+
+.hr1 {
+    background-color: #dc3545;
     height: 3px;
     opacity: 1;
     border: none;
+}
+
+.img300x200 {
+    height: auto;   
+    width: auto;
+    max-height: 200px;
+    max-width: 300px;
+}
+
+.img_carpeta{
+    height: auto;
+    width: auto;
+    max-height: 200px;
+    max-width: 200px;
+}
+
+.logo_home{
+    width: 120px;
+    height: 60px;
 }
 
 .ul-contact {
@@ -32,17 +56,15 @@ header {
     margin: 0px;
     padding: 0px;
 }
-.ul-contact > li > a {
+
+.ul-contact>li>a {
     text-decoration: none;
     color: white;
 }
-.ul-contact > li > a:hover {
+
+.ul-contact>li>a:hover {
     text-decoration: underline;
     color: black;
-}
-
-.news :nth-child(odd) {
-    flex-direction: row-reverse ;
 }
 
 .nav-li:hover {
@@ -50,11 +72,33 @@ header {
     border-radius: 10%;
     transition: 0.3s;
 }
+
 .nav-li {
     font-size: large;
 }
-a {
-    color: red;
+
+.new_height_max {
+    max-height: 220px;
+    height: 100%;
+    overflow: hidden;
+}
+
+.welcome_home {
+    width: 50vh;
+    height: 35vh;
+}
+
+.width100{
+    width: 100%;
+}
+
+@media print {
+    .hidden_print{
+        display: none;
+    }
+    .no_break {
+        page-break-inside: avoid;
+    }
 }
 
 

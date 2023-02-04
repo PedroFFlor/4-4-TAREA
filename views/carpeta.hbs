@@ -1,0 +1,12 @@
+<main class="container-sm text-center">
+   <div class="row justify-content-evenly">
+      {{#each productos }}
+         <div class="col-sm-3 d-flex flex-column no_break">
+            <span>{{desc}}</span>
+            <img src="/img/carpeta/{{{rutaImg}}}" alt={{desc}} class="img_carpeta" />
+            <h6>Embalaje:<strong>{{embalaje}}</strong></h6>
+            <h3>${{precio}}</h3>
+         </div>
+      {{/each}}
+   </div> 
+</main>

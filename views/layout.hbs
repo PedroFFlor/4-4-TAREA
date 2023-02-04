@@ -21,17 +21,17 @@
     <header class="bg-primary">
         <div class="container-sm py-3 d-flex justify-content-between">
             <a class="navbar-brand col-2" href="#">
-                <img src="https://via.placeholder.com/100x50" alt="Logo"></img>
+                 <img class="logo_home" src="/img/home/logo.png" alt="Logo" />
             </a>
             {{#if nombre }}
                 <div class="d-flex col-6">
-                      <h3>Bienvenido {{nombre}} <a href="/admin/logout">Salir</a></h3>
+                      <h2 class="color_blanco" >Bienvenido {{nombre}} <a href='/admin/logout' class="btn btn-danger">Salir</a></h2>
                 </div>
             {{else }}
                 <form action="/login" method="post" class="d-flex col-6" role="search">
                     <div class="input-group mb-3 fs-6">
                         <input type="text" class="form-control" placeholder="Usuario" aria-label="Usuario" name="user"></input>
-                        <input type="text" class="form-control" placeholder="Contraseña" aria-label="Contraseña" name="pass"></input>
+                        <input type="password" class="form-control" placeholder="Contraseña" aria-label="Contraseña" name="pass"></input>
                         <button class="btn btn-danger" type="submit">Entrar</button>
                     </div>
                 </form>
@@ -52,15 +52,35 @@
                         <li class="nav-item nav-li">
                             <a class="nav-link" href="/">Home</a>
                         </li>
-                        <li class="nav-item nav-li">
-                            <a class="nav-link" href="/galeria">Galeria</a>
-                        </li>
-                        <li class="nav-item nav-li">
-                            <a class="nav-link" href="/contacto">Contacto</a>
-                        </li>
-                         {{#if admin}} 
+                        {{#if admin }}
+                            <li class="nav-item nav-li">
+                                <a class="nav-link" href="/ofertas">Ofertas</a>
+                            </li>
+                            <li class="nav-item nav-li">
+                                <a class="nav-link" href="/carpeta">Carpeta</a>
+                            </li>
+                            <li class="nav-item nav-li">
+                                <a class="nav-link" href="/condiciones">Condiciones</a>
+                            </li>
+                            <li class="nav-item nav-li">
+                                <a class="nav-link" href="/mapa">Mapa</a>
+                            </li>
                             <li class="nav-item nav-li">
                                 <a class="nav-link" href="/panel">Panel</a>
+                            </li>
+                        {{/if}}
+                        {{#if vendedor }}
+                            <li class="nav-item nav-li">
+                                <a class="nav-link" href="/">Ofertas</a>
+                            </li>
+                            <li class="nav-item nav-li">
+                                <a class="nav-link" href="/carpeta">Carpeta</a>
+                            </li>
+                            <li class="nav-item nav-li">
+                                <a class="nav-link" href="/condiciones">Condiciones</a>
+                            </li>
+                            <li class="nav-item nav-li">
+                                <a class="nav-link" href="/mapa">Mapa</a>
                             </li>
                         {{/if}}
                     </ul>
@@ -69,6 +89,43 @@
         </nav>
     </header>
     {{{body}}}{{!este boy hace que muestre el contenido de los HBS que armamos}}
-    
+    <footer class="bg-danger py-2 hidden_print" >
+            <div class="container-sm text-center">
+                <div class="row d-flex flex-row align-items-center">
+                    <div class="col-sm-3 d-flex flex-column">
+                        <h5>Seguinos en las redes</h5>
+                        <ul class="ul-contact">
+                            <li><i class="bi bi-facebook p-2"></i><Link to="#">Faccebok</Link></li>
+                            <li><i class="bi bi-instagram p-2"></i><Link to="#">Instagram</Link></li>
+                            <li><i class="bi bi-twitter p-2"></i><Link to="#">Twitter</Link></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6 d-flex flex-column">
+                        <h5>Necesitas que enviemos un representante?</h5>
+                        {{#if contactMensaje}}
+                            <p>{{contactMensaje}}</p>
+                        {{/if}}
+                        <form action="/contacto" method="post">
+                            <input type="text" class="form-control my-1" placeholder='Nombre' name="nombre" />
+                            <input type="text" class="form-control my-1" placeholder='Telefono' name="telefono" />
+                            <input type="text" class="form-control my-1" placeholder='Mail' name="mail"  />
+                            <input type="text" class="form-control my-1" placeholder='Asunto' name="asunto" />
+                            <textarea class="form-control my-1" name="mensaje" placeholder="Mensaje"></textarea>
+                            <button class="btn btn-primary my-1" type="submit">Enviar</button>
+                        </form>
+                    </div>
+                    <div class="col-sm-3 d-flex flex-column">
+                        <ul class="ul-contact">
+                            <li><i class="bi bi-telephone-inbound-fill p-2"></i><span>Telefono: 34134134134</span></li>
+                            <li><i class="bi bi-envelope-fill p-2"></i><span>contacto@distribuidoraX.com.ar</span></li>
+                            <li><i class="bi bi-geo-alt-fill p-2"></i><span>Cordoba 1234, Rosario, Santa Fe</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <h6 class="container text-center">Todos los derechos reservados y la sarasa</h6>
+                </div>
+            </div>
+        </footer>
   </body>
 </html>
